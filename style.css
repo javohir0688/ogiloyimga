@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #333;
+}
+
+.container {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 25px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.container:hover {
+  transform: translateY(-10px);
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color: #ff6f61;
+  text-shadow: 1px 1px 5px #ffa07a;
+}
+
+button {
+  background: #ff6f61;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  color: white;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(255, 111, 97, 0.6);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #e75b50;
+  transform: scale(1.05);
+}
+
+.message-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 25px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.message-visible {
+  max-height: 300px;
+  opacity: 1;
+}
