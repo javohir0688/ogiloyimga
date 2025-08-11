@@ -1,14 +1,16 @@
-const toggleBtn = document.getElementById('toggleBtn');
+const openBtn = document.getElementById('openBtn');
+const closeBtn = document.getElementById('closeBtn');
 const message = document.getElementById('message');
 
-toggleBtn.addEventListener('click', () => {
-  if (message.classList.contains('message-hidden')) {
-    message.classList.remove('message-hidden');
-    message.classList.add('message-visible');
-    toggleBtn.textContent = 'Xatni yopish';
-  } else {
-    message.classList.remove('message-visible');
-    message.classList.add('message-hidden');
-    toggleBtn.textContent = 'Xatni ochish';
-  }
+openBtn.addEventListener('click', () => {
+  message.classList.add('message-visible');
+  openBtn.style.display = 'none';
+  closeBtn.style.display = 'inline-block';
 });
+
+closeBtn.addEventListener('click', () => {
+  message.classList.remove('message-visible');
+  closeBtn.style.display = 'none';
+  openBtn.style.display = 'inline-block';
+});
+
