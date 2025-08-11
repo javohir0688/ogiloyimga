@@ -13,4 +13,3 @@ closeBtn.addEventListener('click', () => {
   closeBtn.style.display = 'none';
   openBtn.style.display = 'inline-block';
 });
-
