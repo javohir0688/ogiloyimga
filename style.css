@@ -1,90 +1,66 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
   color: #333;
 }
 
 .container {
-  background: #fff;
-  padding: 40px 50px;
-  border-radius: 25px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-  max-width: 520px;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  max-width: 500px;
   text-align: center;
   position: relative;
 }
 
-h1 {
-  font-weight: 700;
-  font-size: 3rem;
-  margin-bottom: 30px;
-  color: #ff6f61;
-  text-shadow: 1px 1px 5px #ffa07a;
-}
-
-/* Konvert (envelope) dizayni */
 .envelope {
-  position: relative;
-  width: 320px;
-  height: 220px;
-  margin: 0 auto 30px;
   background: #ff6f61;
-  border-radius: 20px 20px 10px 10px;
-  box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
   overflow: hidden;
-  cursor: default;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6);
   animation: pulse 3s infinite;
 }
 
-/* Yurak animatsiyasi */
 .heart {
-  position: absolute;
-  top: 15px;
-  right: 15px;
   width: 50px;
   height: 50px;
   background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Heart_corazón.svg/1024px-Heart_corazón.svg.png') no-repeat center;
   background-size: contain;
+  position: absolute;
+  top: 15px;
+  right: 15px;
   animation: heartbeat 1.5s infinite;
   pointer-events: none;
 }
 
-/* Xat matni */
 #message {
   color: white;
-  padding: 40px 30px 30px;
   font-size: 1.1rem;
   line-height: 1.6;
+  margin-top: 10px;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.hidden {
   max-height: 0;
   opacity: 0;
   overflow: hidden;
-  transition: max-height 0.7s ease, opacity 0.7s ease;
-  text-align: left;
-  border-radius: 0 0 20px 20px;
-  background: rgba(0,0,0,0.2);
-  margin-top: 0;
 }
 
-/* Xat ko‘rinishi */
-.message-visible {
+.visible {
   max-height: 300px;
   opacity: 1;
-  margin-top: 10px;
 }
 
-/* Imzo */
 .signature {
   margin-top: 20px;
   font-style: italic;
@@ -93,7 +69,6 @@ h1 {
   opacity: 0.8;
 }
 
-/* Tugmalar */
 .buttons {
   display: flex;
   justify-content: center;
@@ -101,16 +76,15 @@ h1 {
 }
 
 button {
-  background: #ff6f61;
+  padding: 12px 30px;
   border: none;
-  padding: 15px 35px;
-  font-size: 1.1rem;
-  color: white;
   border-radius: 40px;
+  background: #ff6f61;
+  color: white;
+  font-size: 1.1rem;
   cursor: pointer;
   box-shadow: 0 6px 20px rgba(255, 111, 97, 0.6);
   transition: background 0.3s ease, transform 0.2s ease;
-  user-select: none;
 }
 
 button:hover {
@@ -118,29 +92,13 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Yurak urishi animatsiyasi */
 @keyframes heartbeat {
-  0%, 100% {
-    transform: scale(1);
-  }
-  25% {
-    transform: scale(1.2);
-  }
-  50% {
-    transform: scale(1);
-  }
-  75% {
-    transform: scale(1.2);
-  }
+  0%, 100% { transform: scale(1); }
+  25%, 75% { transform: scale(1.2); }
+  50% { transform: scale(1); }
 }
 
-/* Konvert pulsatsiyasi */
 @keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6);
-  }
-  50% {
-    box-shadow: 0 12px 40px rgba(255, 111, 97, 0.8);
-  }
+  0%, 100% { box-shadow: 0 8px 25px rgba(255, 111, 97, 0.6); }
+  50% { box-shadow: 0 12px 40px rgba(255, 111, 97, 0.8); }
 }
-
