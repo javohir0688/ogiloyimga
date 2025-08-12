@@ -148,6 +148,9 @@
     
     .buttons {
       margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     
     button {
@@ -170,6 +173,23 @@
     
     button:active {
       transform: translateY(0);
+    }
+    
+    #happyBtn {
+      background-color: #2a9d8f;
+    }
+    
+    #happyBtn:hover {
+      background-color: #21867a;
+    }
+    
+    #status {
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: 5px;
+      display: none;
+      background-color: #d4edda;
+      color: #155724;
     }
     
     @media (max-width: 600px) {
@@ -206,7 +226,10 @@
     <div class="buttons">
       <button id="openBtn">Xatni ochish</button>
       <button id="closeBtn" style="display:none;">Xatni yopish</button>
+      <button id="happyBtn">Xursand bo'lgan bo'lsangiz bosing</button>
     </div>
+    
+    <div id="status"></div>
   </div>
 
   <script>
@@ -214,6 +237,8 @@
     const message = document.getElementById('message');
     const openBtn = document.getElementById('openBtn');
     const closeBtn = document.getElementById('closeBtn');
+    const happyBtn = document.getElementById('happyBtn');
+    const status = document.getElementById('status');
     
     openBtn.addEventListener('click', () => {
       envelope.classList.add('open');
@@ -228,6 +253,23 @@
       closeBtn.style.display = 'none';
       openBtn.style.display = 'inline-block';
     });
+    
+    happyBtn.addEventListener('click', () => {
+      const recipient = "abdusattorovjavohir06@gmail.com";
+      const subject = "Men xursandman!";
+      const body = `Hurmatli Javohir,\n\nSizning xatingizni o'qidim va juda xursand bo'ldim!\n\nVaqt: ${new Date()}\n\nHurmat bilan,\nSizning muxlisingiz`;
+      
+      status.textContent = "Email dasturingiz ochilmoqda...";
+      status.style.display = 'block';
+      
+      setTimeout(() => {
+        window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      }, 500);
+      
+      setTimeout(() => {
+        status.style.display = 'none';
+      }, 3000);
+    });
   </script>
 </body>
-</html>
+</html>     
