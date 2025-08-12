@@ -4,21 +4,203 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ogiloyimga</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #e63946;
+      --secondary-color: #f1faee;
+      --accent-color: #a8dadc;
+      --dark-color: #1d3557;
+      --text-color: #333;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      padding: 2rem;
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      font-size: 3rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .envelope {
+      position: relative;
+      width: 200px;
+      height: 120px;
+      background-color: var(--primary-color);
+      margin: 0 auto 2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .envelope:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 0;
+      height: 0;
+      border-left: 100px solid transparent;
+      border-right: 100px solid transparent;
+      border-top: 70px solid #ef476f;
+      transform-origin: top;
+      transform: rotateX(0deg);
+      transition: all 0.3s ease;
+      z-index: 3;
+    }
+    
+    .envelope.open:before {
+      transform: rotateX(180deg);
+    }
+    
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      z-index: 2;
+    }
+    
+    .heart:before,
+    .heart:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border-radius: 50%;
+    }
+    
+    .heart:before {
+      left: -20px;
+    }
+    
+    .heart:after {
+      top: -20px;
+    }
+    
+    #message {
+      background-color: var(--secondary-color);
+      padding: 2rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      text-align: left;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      border-left: 4px solid var(--primary-color);
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
+      transition: all 0.5s ease;
+    }
+    
+    #message.show {
+      opacity: 1;
+      height: auto;
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    
+    #message p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .signature {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5rem;
+      text-align: right;
+      color: var(--primary-color);
+      margin-top: 1.5rem;
+    }
+    
+    .buttons {
+      margin-top: 2rem;
+    }
+    
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    button:hover {
+      background-color: #c1121f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        width: 95%;
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      #message p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
     <h1>Ogiloyimga</h1>
 
-    <div class="envelope">
+    <div class="envelope" id="envelope">
       <div class="heart"></div>
-      <div id="message" class="hidden">
-        <p>Siz mening hayotimning eng go'zal in'omsiz. Shu kunga qadar sizsizlikka qanday dosh berayapman o'zim ham bilmayman.
-Sizning yuzingizga qarashlik ila, har doim har xil dard-qayg'ularimni unutar edim, sizning tabassumingiz esa butun qalbimni nur bilan to'ldirib yuborardi.
-Men sizni butun qalbim bilan sevib qolaman va har doim, taqdirlarimiz birlashmaganida ham sevib qolaveraman.
-      Hurmat bilan  sizni qattiq sevuchi  </p>
-        <p class="signature">— Javohir</p>
-      </div>
+    </div>
+
+    <div id="message">
+      <p>Siz mening hayotimning eng go'zal in'omsiz. Shu kunga qadar sizsizlikka qanday dosh berayapman o'zim ham bilmayman.</p>
+      <p>Sizning yuzingizga qarashlik ila, har doim har xil dard-qayg'ularimni unutar edim, sizning tabassumingiz esa butun qalbimni nur bilan to'ldirib yuborardi.</p>
+      <p>Men sizni butun qalbim bilan sevib qolaman va har doim, taqdirlarimiz birlashmaganida ham sevib qolaveraman.</p>
+      <p class="signature">— Javohir</p>
     </div>
 
     <div class="buttons">
@@ -27,6 +209,25 @@ Men sizni butun qalbim bilan sevib qolaman va har doim, taqdirlarimiz birlashmag
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const envelope = document.getElementById('envelope');
+    const message = document.getElementById('message');
+    const openBtn = document.getElementById('openBtn');
+    const closeBtn = document.getElementById('closeBtn');
+    
+    openBtn.addEventListener('click', () => {
+      envelope.classList.add('open');
+      message.classList.add('show');
+      openBtn.style.display = 'none';
+      closeBtn.style.display = 'inline-block';
+    });
+    
+    closeBtn.addEventListener('click', () => {
+      envelope.classList.remove('open');
+      message.classList.remove('show');
+      closeBtn.style.display = 'none';
+      openBtn.style.display = 'inline-block';
+    });
+  </script>
 </body>
 </html>
