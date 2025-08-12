@@ -166,45 +166,231 @@
       background-color: #d4edda;
       color: #155724;
     }
-    /* Modal oynasi */
-    #nameModal {
+    
+    /* Sovg'a sahifasi stillari */
+    .gift-page {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-    #nameModal .modal-content {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 300px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      animation: popIn 0.3s ease;
-    }
-    @keyframes popIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    #giftName {
-      padding: 10px;
-      margin-top: 10px;
+      top: 0;
+      left: 0;
       width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
     }
-    #sendNameBtn {
-      background: var(--primary-color);
+
+    .gift-page.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gift-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 40px 30px;
+      box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      transform: translateY(0);
+      transition: transform 0.3s ease;
+    }
+
+    .gift-container:hover {
+      transform: translateY(-5px);
+    }
+
+    .gift-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .gift-container h1 {
+      color: #2c3e50;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .subtitle {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      color: #34495e;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .gift-container input, .gift-container textarea {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e9ecef;
+      border-radius: 15px;
+      font-size: 16px;
+      font-family: inherit;
+      background: rgba(255,255,255,0.8);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .gift-container input:focus, .gift-container textarea:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    .gift-container textarea {
+      resize: vertical;
+      min-height: 100px;
+      max-height: 150px;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
       color: white;
-      padding: 10px 15px;
       border: none;
-      border-radius: 5px;
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
       cursor: pointer;
-      margin-top: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(-1px);
+    }
+
+    .social-links {
+      margin-top: 30px;
+      padding-top: 25px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .social-links h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      padding: 10px 15px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .phone-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .phone-links a {
+      background: linear-gradient(135deg, #2ecc71, #27ae60);
+      font-size: 13px;
+    }
+
+    .phone-links a:hover {
+      box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+    }
+
+    .back-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 480px) {
+      .gift-container {
+        margin: 10px;
+        padding: 30px 20px;
+      }
+      
+      .gift-container h1 {
+        font-size: 1.6rem;
+      }
+      
+      .gift-icon {
+        font-size: 3rem;
+      }
+      
+      .social-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -228,13 +414,41 @@
     <div id="status"></div>
   </div>
 
-  <!-- Modal oyna -->
-  <div id="nameModal">
-    <div class="modal-content">
-      <h3>Sovg'a yuborishim uchun ismingizni yozing 🎁</h3>
-      <input type="text" id="giftName" placeholder="Ismingiz">
-      <br>
-      <button id="sendNameBtn">Yuborish</button>
+  <!-- Sovg'a sahifasi -->
+  <div id="giftPage" class="gift-page">
+    <button class="back-btn" id="backBtn">✕</button>
+    <div class="gift-container">
+      <div class="gift-icon">🎁</div>
+      <h1>Maxsus Taklifnoma</h1>
+      <p class="subtitle">Ismingizni kiriting va website haqida fikringiz</p>
+
+      <form action="https://formspree.io/f/mldlzjld" method="POST" id="giftForm">
+        <div class="form-group">
+          <label for="ism">Ismingiz *</label>
+          <input type="text" id="ism" name="ism" placeholder="To'liq ismingizni kiriting" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="fikr">Website haqida fikringiz</label>
+          <textarea id="fikr" name="fikr" placeholder="Fikr-mulohazalaringizni yozing... (ixtiyoriy)"></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">✨ Yuborish</button>
+      </form>
+
+      <div class="social-links">
+        <h3>📞 Bog'lanish</h3>
+        
+        <div class="social-grid">
+          <a href="https://t.me/javohir206" target="_blank">📱 Telegram</a>
+          <a href="https://instagram.com/javohir_0688" target="_blank">📸 Instagram</a>
+        </div>
+        
+        <div class="phone-links">
+          <a href="tel:+998777378806">☎️ +998 77 737 88 06</a>
+          <a href="tel:+998931700688">☎️ +998 93 170 06 88</a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -244,8 +458,9 @@
     const openBtn = document.getElementById('openBtn');
     const closeBtn = document.getElementById('closeBtn');
     const happyBtn = document.getElementById('happyBtn');
-    const nameModal = document.getElementById('nameModal');
-    const sendNameBtn = document.getElementById('sendNameBtn');
+    const giftPage = document.getElementById('giftPage');
+    const backBtn = document.getElementById('backBtn');
+    const giftForm = document.getElementById('giftForm');
 
     openBtn.addEventListener('click', () => {
       envelope.classList.add('open');
@@ -262,34 +477,50 @@
     });
 
     happyBtn.addEventListener('click', () => {
-      nameModal.style.display = 'flex';
+      giftPage.classList.add('show');
     });
 
-    sendNameBtn.addEventListener('click', async () => {
-      const name = document.getElementById('giftName').value.trim();
-      if (!name) {
-        alert("Iltimos, ismingizni yozing!");
-        return;
+    backBtn.addEventListener('click', () => {
+      giftPage.classList.remove('show');
+    });
+
+    giftForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(giftForm);
+      const submitBtn = giftForm.querySelector('.submit-btn');
+      
+      // Submit tugmasini o'zgartirish
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Yuborilmoqda...';
+      submitBtn.disabled = true;
+      
+      try {
+        await fetch("https://formspree.io/f/mldlzjld", {
+          method: "POST",
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        alert("Rahmat! Sovg'angiz tez orada tayyor bo'ladi 🎁");
+        giftForm.reset();
+        giftPage.classList.remove('show');
+      } catch (error) {
+        alert("Xatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
+      } finally {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
       }
-      await fetch("https://formspree.io/f/mldlzjld", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name,
-          message: "Men xursandman!",
-          time: new Date().toLocaleString()
-        })
-      });
-      alert("Rahmat! Sovg'angiz tez orada tayyor bo'ladi 🎁");
-      nameModal.style.display = 'none';
     });
 
-    // Modal tashqarisiga bosganda yopish
-    window.addEventListener('click', (e) => {
-      if (e.target === nameModal) {
-        nameModal.style.display = 'none';
+    // Escape tugmasi bilan yopish
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && giftPage.classList.contains('show')) {
+        giftPage.classList.remove('show');
       }
     });
   </script>
 </body>
-</html>
+  </html>
